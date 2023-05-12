@@ -1,0 +1,71 @@
+
+*{
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+    border: none;
+}
+
+body{
+    width: 100%;
+    height: 100%;
+}
+
+@mixin ornek($genislik, $color, $renk){
+    width: $genislik;
+    background-color: $color;
+    color: $renk;
+    flex: 50%;
+    height: 100%;
+}
+
+@mixin mediaQuery($args...){
+    // @media screen and(max-width: nth($args, 1)){
+    //     @content;
+    // }
+
+    @if length($args) ==2{
+        //
+    }
+}
+
+@mixin stil($takim){
+    @if ( $takim == "ss" ) {
+        background: red;
+        color: #fff ;
+    } @else if( $takim == "bs" ) {
+        background: green ;
+        color: #fff ;
+    } @else if ( $takim == "as" ) {
+        background: orange;
+        color: green;
+    }
+}
+
+.container{
+    display: flex;
+    
+    main {
+        
+        section{
+            @include ornek(100%, black, red);
+        }
+
+        %xd{
+            background-color: reds;
+            padding: 50px;
+        }
+
+        .box1{
+            @extend %xd;
+        }
+        .box2{
+            @extend %xd;
+        }
+        .box3{
+            @extend %xd;
+        }
+    }
+}
+
+
