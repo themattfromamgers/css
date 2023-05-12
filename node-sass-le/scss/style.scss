@@ -1,0 +1,164 @@
+//LIB
+
+
+//TEMEL
+%star{
+	padding: 0;
+	margin: 0;
+	border: none;
+	box-sizing: border-box;
+}
+
+//GRID
+
+%grid{
+	display: grid;
+}
+
+@mixin grid-template($cols, $rows, $areas, $gap, $col-gap, $row-gap){
+	display: grid;
+	grid-template-columns: $cols;
+	grid-template-rows: $rows;
+	grid-template-areas:
+	$areas;
+	gap: $gap;
+	column-gap: $col-gap;
+	row-gap: $row-gap;
+	@content;
+}
+
+@mixin rows($rows){
+	grid-template-rows: $rows;
+	@content;
+}
+
+@mixin col($variables){
+	grid-template-columns: $variables;
+	@content;
+}
+
+@mixin col-fit($variables, $fr, $re){
+	@if $re == true {
+		grid-template-columns: reapat(auto-fit, minmax($variables, $fr));
+		@content;
+	}
+	@else {
+		grid-template-columns: repeat($variables, $fr);
+		@content;
+	}
+}
+
+@mixin col-start($varibles){
+	grid-column-start: $varibles;
+	@content;
+}
+
+@mixin col-end($varibles){
+	grid-column-end: $varibles;
+	@content;
+}
+
+@mixin row-start($varibles){
+	grid-row-start: $varibles;
+	@content;
+}
+
+@mixin row-end($varibles){
+	grid-row-end: $varibles;
+	@content;
+}
+
+@mixin areas($variables){
+	grid-template-areas:
+	$variables;
+	@content;
+}
+
+@mixin area($variables){
+	grid-area: $variables;
+	@content;
+}
+
+@mixin col-gap($variables){
+	column-gap: $variables;
+	@content;
+}
+
+@mixin row-gap($variables){
+	row-gap: $variables;
+	@content;
+}
+
+@mixin template($variables){
+	grid-template: $variables;
+	@content;
+}
+
+@mixin auto-flow($variables){
+	grid-auto-flow: $variables;
+	@content;
+}
+
+@mixin auto-col($variables){
+	grid-auto-columns: $variables;
+	@content;
+}
+
+@mixin auto-rows($variables){
+	grid-auto-rows: $variables;
+	@content;
+}
+
+//FLEX
+
+%flex{
+	display: flex;
+}
+
+%iflex{
+	display: inline-flex;
+}
+
+@mixin direction($varibles){
+	flex-direction: $varibles;
+	@content;
+}
+
+@mixin wrap($variable){
+	flex-wrap: $variable;
+	@content;
+}
+
+@mixin basis($variable){
+	flex-basis: $variable;
+	@content;
+}
+
+@mixin shrink($variable){
+	flex-shrink: $variable;
+	@content;
+}
+
+@mixin flow($variable){
+	flex-flow: $variable;
+	@content;
+}
+
+@mixin responsive-flex($variables){
+	flex: $variables;
+	@content;
+}
+
+@mixin mobil-responsive($args...){
+	@media only screen and (max-width: $args) {
+		@content;
+	}	
+}
+
+//TEST
+.tests{
+	@include col-fit(50px,1fr, 'true');
+}
+
+
+

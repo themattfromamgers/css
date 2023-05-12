@@ -1,0 +1,33 @@
+main{
+	display: grid;
+	grid-template-columns: reapat(auto-fit, minmax(50px, 1fr));
+	grid-template-rows: 60px;
+	grid-template-areas: 
+	"nav nav nav"
+	"header header section"
+	"footer footer footer";
+	gap: 5px;
+}
+
+nav, header, section, footer{
+	border: 3px solid black;
+}
+
+nav{
+	grid-area: nav;
+	background: red;
+	
+}
+header{
+	grid-area: header;
+	background: green;
+}
+
+section{
+	grid-area: section;
+	background: yellow;
+}
+footer{
+	grid-area: footer;
+	background: blue;
+}
